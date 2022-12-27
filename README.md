@@ -1,4 +1,4 @@
-## TCO and Go
+# TCO and Go
 
 Here is just a little benchmark of how re-structuring a recursive function can
 lead to better performance with tail call optimizations.
@@ -12,3 +12,18 @@ could easily restructure in Go that would result in TCO.
 To be clear, I still thing the resulting assessment of the video is correct -
 Rust is more performant than Go. But it's a silly video and I wanted to do a
 silly rebuttal :D
+
+## Local Results
+
+```
+↪ go test -bench=.
+goos: darwin
+goarch: arm64
+pkg: shifteleven.com/recursionbenchmark
+BenchmarkBasicRecursion-8                      4         312238250 ns/op
+BenchmarkExtraCaseRecursion-8                  7         150884179 ns/op
+BenchmarkTCORecursion-8                 33120693                35.36 ns/op
+PASS
+ok      shifteleven.com/recursionbenchmark      5.051s
+```
+
